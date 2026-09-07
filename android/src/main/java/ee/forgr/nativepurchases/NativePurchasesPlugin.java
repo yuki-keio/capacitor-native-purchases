@@ -1225,7 +1225,7 @@ public class NativePurchasesPlugin extends Plugin {
                         }
                     } catch (Exception ex) {
                         Log.d(TAG, "Error processing in-app purchase query: " + ex.getMessage());
-                        queryFailure.compareAndSet(null, "inapp: " + ex.getMessage());
+                        queryFailure.compareAndSet(null, describeQueryFailure("inapp", billingResult) + " / " + ex.getMessage());
                     } finally {
                         maybeFinish.run();
                     }
@@ -1280,7 +1280,7 @@ public class NativePurchasesPlugin extends Plugin {
                         }
                     } catch (Exception ex) {
                         Log.d(TAG, "Error processing subscription purchase query: " + ex.getMessage());
-                        queryFailure.compareAndSet(null, "subs: " + ex.getMessage());
+                        queryFailure.compareAndSet(null, describeQueryFailure("subs", billingResult) + " / " + ex.getMessage());
                     } finally {
                         maybeFinish.run();
                     }
